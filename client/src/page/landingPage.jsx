@@ -51,15 +51,17 @@ const LandingPage = () => {
       <img 
         src={blog.photos[0]} 
         alt="blogImg" 
-        className="w-64 h-40 object-cover rounded-lg"
+        className="w-[320px] h-[260px] object-cover rounded-lg"
       />
 
       {/* เนื้อหา */}
       <div className="flex flex-col flex-1">
         <h1 className="text-lg font-bold mb-2">{blog.title}</h1>
         <div className="flex flex-col gap-2">
-          <div className="line-clamp-2">
-            {blog.description}
+          <div className="text-gray-600">
+            {blog.description && blog.description.length > 100
+              ? `${blog.description.substring(0, 100)}...`
+              : blog.description}
           </div>
           <a 
             href={blog.url}
@@ -82,10 +84,10 @@ const LandingPage = () => {
         </div>
 
         {/* รูปเล็ก */}
-        <div className="flex flex-row gap-2 mt-3">
-          <img src={blog.photos[1]} alt="blogImg" className="w-20 h-20 object-cover rounded-md"/>
-          <img src={blog.photos[2]} alt="blogImg" className="w-20 h-20 object-cover rounded-md"/>
-          <img src={blog.photos[3]} alt="blogImg" className="w-20 h-20 object-cover rounded-md"/>
+        <div className="flex flex-row gap-7 mt-3">
+          <img src={blog.photos[1]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+          <img src={blog.photos[2]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+          <img src={blog.photos[3]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
         </div>
       </div>
     </div>
