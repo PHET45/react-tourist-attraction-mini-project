@@ -83,7 +83,7 @@ const LandingPage = () => {
 
           {/* เนื้อหา */}
           <div className="flex flex-col flex-1">
-            <h1 className="text-lg font-bold mb-2">{blog.title}</h1>
+            <h1 className="text-lg font-bold mb-2 hover:underline"><a href={blog.url} target="_blank">{blog.title}</a></h1>
             <div className="flex flex-col gap-2">
               <div className="text-gray-600">
                 {blog.description && blog.description.length > 100
