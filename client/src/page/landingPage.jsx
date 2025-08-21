@@ -5,7 +5,7 @@ import { Input } from '../components/ui/input'
 const LandingPage = () => {
     const [blogs, setBlogs] = useState([])
     const [text, setText] = useState("")
-    const [expandedDescriptions, setExpandedDescriptions] = useState({})
+    
 
   useEffect(() => {
     if(text){
@@ -30,12 +30,7 @@ const LandingPage = () => {
     setText(e.target.value)
   }
 
-  const toggleDescription = (blogId) => {
-    setExpandedDescriptions(prev => ({
-      ...prev,
-      [blogId]: !prev[blogId]
-    }))
-  }
+  
   return (
     
   <div className="flex flex-col items-center justify-center">
@@ -63,15 +58,17 @@ const LandingPage = () => {
       <div className="flex flex-col flex-1">
         <h1 className="text-lg font-bold mb-2">{blog.title}</h1>
         <div className="flex flex-col gap-2">
-          <div className={expandedDescriptions[blog?.id || index] ? '' : 'line-clamp-2'}>
+          <div className="line-clamp-2">
             {blog.description}
           </div>
-          <button 
-            onClick={() => toggleDescription(blog?.id || index)}
+          <a 
+            href={blog.url}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-blue-400 hover:text-blue-800 underline text-sm self-start"
           >
-            {expandedDescriptions[blog?.id || index] ? 'ย่อข้อความ' : 'อ่านต่อ'}
-          </button>
+            อ่านต่อ
+          </a>
         </div>
 
         {/* tags */}
