@@ -107,7 +107,7 @@ const LandingPage = () => {
                 <button
                   key={tagIndex}
                   onClick={() => handleTagClick(tag)}
-                  className={`px-2 py-1 rounded text-sm underline transition ${
+                  className={`px-2 py-1 rounded text-sm underline transition cursor-pointer ${
                     selectedTags.includes(tag) 
                       ? "bg-blue-100 text-blue-600" 
                       : "hover:text-blue-800"
