@@ -1,18 +1,24 @@
 import React from 'react'
 import axios from 'axios'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, useMemo } from 'react'
+import debounce from 'lodash.debounce'
 import { Input } from '../components/ui/input'
 const LandingPage = () => {
     const [blogs, setBlogs] = useState([])
     const [text, setText] = useState("")
     
 
+  const debouncedFetch = useMemo(() => debounce((q) => {
+    FetchPage(q)
+  }, 400), [])
+
   useEffect(() => {
-    if(text){
-      FetchPage(text)
+    if (text) {
+      debouncedFetch(text)
     }
-    FetchPage(text)
-  },[text])
+    FetchPage()
+    return () => debouncedFetch.cancel()
+  }, [text, debouncedFetch])
 
   const FetchPage = async(queryIn) => {
     let query = `${encodeURIComponent(queryIn ?? "")}`;
@@ -33,11 +39,12 @@ const LandingPage = () => {
   
   return (
     
-  <div className="flex flex-col items-center justify-center">
+  <div className="flex flex-col items-center justify-center min-h-screen">
   <h1 className="text-blue-400 text-2xl mb-4">เที่ยวไหนดี</h1>
-  <div className='w-full max-w-7xl'>
-  <div className='flex flex-col gap-2'>
-    <label className='text-sm font-medium text-gray-700'>ค้นหาที่เที่ยว</label>
+  <div className='w-full max-w-7xl mx-auto px-4'>
+  
+  <div className='flex flex-col gap-2 items-start'>
+  <label className='text-sm font-medium text-gray-700'>ค้นหาที่เที่ยว</label>
     <Input 
       value={text}
       onChange={handleInputChange}
