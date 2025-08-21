@@ -57,7 +57,7 @@ const LandingPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1 className="text-blue-400 text-2xl mb-4">เที่ยวไหนดี</h1>
       <div className='w-full max-w-7xl mx-auto px-4'>
-        <div className='flex flex-col gap-2 items-start'>
+        <div className='flex flex-col gap-2 items-start m-10'>
           <label className='text-sm font-medium text-gray-700'>ค้นหาที่เที่ยว</label>
           <Input 
             value={text}
