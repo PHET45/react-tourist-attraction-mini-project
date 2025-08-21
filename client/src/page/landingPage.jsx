@@ -119,11 +119,24 @@ const LandingPage = () => {
             </div>
 
             {/* รูปเล็ก */}
-            <div className="flex flex-row gap-7 mt-3">
-              <img src={blog.photos[1]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
-              <img src={blog.photos[2]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
-              <img src={blog.photos[3]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+            <div className="flex flex-row gap-30 mt-3">
+              <div className='flex flex-row gap-7 mt-3'>
+                  <img src={blog.photos[1]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+                  <img src={blog.photos[2]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+                  <img src={blog.photos[3]} alt="blogImg" className="w-24 h-24 object-cover rounded-md"/>
+              </div>
+              <button
+                onClick={() =>
+                  navigator.clipboard
+                    .writeText(blog.url)
+                    .then(() => alert('คัดลอกลิงก์'))
+                }
+                aria-label="คัดลอกลิงก์"
+              >
+                <img src="/copyImage.svg" alt="copy link"/>
+              </button>
             </div>
+            
           </div>
         </div>
       ))}
