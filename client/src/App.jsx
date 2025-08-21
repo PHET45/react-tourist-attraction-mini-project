@@ -1,5 +1,5 @@
 import "./App.css";
-import LandingPage from "./components/ui/landingPage";
+import LandingPage from "./page/landingPage";
 import React from "react";
 function App() {
   return <div className="App">

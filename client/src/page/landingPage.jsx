@@ -1,9 +1,11 @@
 import React from 'react'
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-const landingPage = () => {
+import { Input } from '../components/ui/input'
+const LandingPage = () => {
     const [blogs, setBlogs] = useState([])
     const [text, setText] = useState("")
+    const [expandedDescriptions, setExpandedDescriptions] = useState({})
 
   useEffect(() => {
     if(text){
@@ -16,9 +18,8 @@ const landingPage = () => {
     let query = `${encodeURIComponent(queryIn ?? "")}`;
     try{
       const res = await axios.get(`http://localhost:4001/trips?keywords=${query}`)
-      console.log(res)
       if(res.status === 200){
-        setBlogs(res)
+        setBlogs(res.data.data)
       }
     } catch(err) {
       console.error("Error fetching products:", err);
@@ -28,9 +29,16 @@ const landingPage = () => {
   const handleInputChange = (e) => {
     setText(e.target.value)
   }
+
+  const toggleDescription = (blogId) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [blogId]: !prev[blogId]
+    }))
+  }
   return (
     
-      <div className="flex flex-col items-center justify-center">
+  <div className="flex flex-col items-center justify-center">
   <h1 className="text-blue-400 text-2xl mb-4">เที่ยวไหนดี</h1>
   <Input 
     value={text}
@@ -91,4 +99,4 @@ const landingPage = () => {
   )
 }
 
-export default landingPage
+export default LandingPage
