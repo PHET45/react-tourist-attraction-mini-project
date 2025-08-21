@@ -132,6 +132,7 @@ const LandingPage = () => {
                     .then(() => alert('คัดลอกลิงก์'))
                 }
                 aria-label="คัดลอกลิงก์"
+                className='cursor-pointer'
               >
                 <img src="/copyImage.svg" alt="copy link"/>
               </button>
